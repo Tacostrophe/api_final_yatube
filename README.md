@@ -1,24 +1,82 @@
 # api_final
+### Описание проекта:
+Данный проект является ветвью проекта Yatube и позволяет при помощи API взаимодействовать с его объектами:
+- публикациями;
+- группами;
+- комментариями;
+- подписками.
+
+### Примеры API запросов:
+#### **GET** /api/v1/posts/
+Получить список всех публикаций. При указании параметров limit и offset выдача должна работать с пагинацией.
+
+###### Пример ответа:
+```
+{
+  "count": 123,
+  "next": ".../?offset=400&limit=100",
+  "previous": ".../?offset=200&limit=100",
+  "results": [
+    {
+      "id": {post_id},
+      "author": "string",
+      "text": "string",
+      "pub_date": "2021-10-14T20:41:29.648Z",
+      "image": "string",
+      "group": {group_id}
+    }
+  ]
+}
+```
+#### **PUT** /api/v1/posts/{post_id}/comments/{comment_id}/
+Обновление комментария к публикации по id. Обновить комментарий может только автор комментария.
+###### Пример запроса:
+```
+{
+  "text": "string"
+}
+```
+###### Пример ответа:
+```
+{
+  "id": {comment_id},
+  "author": "string",
+  "text": "string",
+  "created": "2019-08-24T14:15:22Z",
+  "post": {post_id}
+}
+```
+#### **POST** /api/v1/follow/
+Подписка пользователя от имени которого сделан запрос на пользователя переданного в теле запроса. Анонимные запросы запрещены.
+###### Пример запроса:
+```
+{
+  "following": "string"
+}
+```
+###### Пример ответа:
+```
+{
+  "user": "string",
+  "following": "string"
+}
+```
 ### Как запустить проект:
 
-Клонировать репозиторий и перейти в него в командной строке:
+Клонировать репозиторий:
 
 ```
-git clone https://github.com/yandex-praktikum/kittygram.git
+git clone https://github.com/Tacostrophe/api_final_yatube.git
 ```
 
-```
-cd kittygram
-```
-
-Cоздать и активировать виртуальное окружение:
+В репозитории создать и активировать виртуальное окружение:
 
 ```
-python3 -m venv env
+python3 -m venv venv
 ```
 
 ```
-source env/bin/activate
+source venv/bin/activate
 ```
 
 Установить зависимости из файла requirements.txt:
@@ -43,4 +101,3 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-api final
