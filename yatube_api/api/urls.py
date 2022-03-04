@@ -10,7 +10,6 @@ router_v1.register(r'follow', views.FollowViewSet, 'follow')
 router_v1.register(r'posts/(?P<post_id>\d+)/comments',
                 views.CommentsViewSet, 'comments')
 
-
 urlpatterns = [
     path('v1/', include(router_v1.urls)),
     path('v1/', include('djoser.urls.jwt')),
