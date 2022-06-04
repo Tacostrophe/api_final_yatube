@@ -72,11 +72,10 @@ git clone https://github.com/Tacostrophe/api_final_yatube.git
 В репозитории создать и активировать виртуальное окружение:
 
 ```
-python3 -m venv venv
+python3 -m venv /path/to/new/virtual/environment
 ```
-
 ```
-source venv/bin/activate
+source /path/to/new/virtual/environment/bin/activate
 ```
 
 Установить зависимости из файла requirements.txt:
@@ -101,3 +100,4 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
+<sub>Всегда рад замечаниям и советам</sub>
